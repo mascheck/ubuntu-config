@@ -1,5 +1,5 @@
 ---
-version: "2.1"
+version: "3.9"
 services:
   unifi-controller:
     image: lscr.io/linuxserver/unifi-controller:latest
@@ -10,7 +10,7 @@ services:
       - MEM_LIMIT=1024 #optional
       - MEM_STARTUP=1024 #optional
     volumes:
-      - /data/unifi:/config
+      - unifi-data:/config
     ports:
       - 8443:8443
       - 3478:3478/udp
@@ -22,3 +22,6 @@ services:
       - 6789:6789 #optional
       - 5514:5514/udp #optional
     restart: unless-stopped
+volumes:
+  unifi-data: /data/unifi
+
